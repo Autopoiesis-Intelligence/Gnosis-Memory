@@ -1,0 +1,63 @@
+id: R2-EAA-2026-09-26
+title: Evidence Authority Action Causal Contract
+status: IMPLEMENTED_PENDING_RUNTIME_VERIFICATION
+date: 2026-09-26
+scope: Gnozis-Core
+mathematical_contract:
+  definitions:
+    evidence: "information supporting a proposition or transition; not authority"
+    authority: "explicit permission to cross a protected runtime boundary"
+    proposal: "candidate description; not a state transition"
+    action: "runtime operation permitted only after required authorization"
+    commit: "accepted semantic transition recorded in causal history"
+  separation_invariants:
+    - "Evidence != Authority"
+    - "Proposal != Transition"
+    - "Authorization != Execution"
+    - "Execution != Commit"
+    - "ExternalState != CoreAuthority"
+  causal_order:
+    - Evidence
+    - Proposal
+    - Proof
+    - Admission
+    - Authorization
+    - Action
+    - Commit
+    - History
+  safety_rules:
+    - "Missing or invalid proof blocks Admission"
+    - "Missing authorization blocks Action"
+    - "Missing provenance blocks Commit"
+    - "History conflict blocks duplicate or conflicting Commit"
+    - "External repository state cannot implicitly mutate trusted Core state"
+architecture_mapping:
+  psi_semantic_layer:
+    entrypoint: core/commit.py::SemanticCommit.apply
+    responsibility:
+      - require_admitted
+      - canonicalize_psi
+      - verify_previous_state_continuity
+      - construct_transition_record
+  canonical_runtime_layer:
+    entrypoint: core/canonical_chain.py::commit_admitted_psi
+    responsibility:
+      - bind_provenance
+      - enforce_safety
+      - enforce_gas
+      - delegate_idempotent_commit
+  durable_layer:
+    entrypoint: core/sqlite_persistence.py::SQLiteHistoryStore.commit_once
+    authority: false
+    responsibility:
+      - atomic_durable_history
+      - crash_recovery
+      - retry_idempotence
+verification:
+  implemented_tests:
+    - tests/test_canonical_commit_composition.py::test_semantic_commit_uses_shared_safety_gate
+    - tests/test_canonical_commit_composition.py::test_semantic_commit_binds_provenance_through_shared_gate
+  pending:
+    - full_ci_execution
+    - adversarial_replay_after_process_restart
+    - persistence/audit causal-chain integration
