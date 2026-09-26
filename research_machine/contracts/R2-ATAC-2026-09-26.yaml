@@ -1,0 +1,21 @@
+id: R2-ATAC-2026-09-26
+title: Atomic Transition Audit Commit
+status: IMPLEMENTED_PENDING_RUNTIME_VERIFICATION
+invariant:
+  - "Accepted durable transition implies exactly one causally bound durable audit record."
+  - "History and Audit commit atomically or neither becomes durable."
+  - "A persisted audit digest is independently verified on load."
+architecture:
+  durable_operation: "SQLiteHistoryStore.commit_once_with_audit"
+  transaction: "BEGIN IMMEDIATE -> transition insert -> audit insert -> COMMIT"
+  rollback: "any injected or runtime failure before COMMIT rolls back both"
+tests:
+  - "test_history_and_audit_are_atomic"
+  - "test_durable_audit_tamper_fails_closed"
+compatibility_note:
+  - "Legacy commit_once remains history-only for compatibility; canonical migration must route durable semantic commits through commit_once_with_audit."
+pending:
+  - "route canonical commit path to audited durable operation"
+  - "persist/load provenance required for full audit reconstruction"
+  - "recovery must verify durable audit before derived state"
+  - "CI runtime verification"
