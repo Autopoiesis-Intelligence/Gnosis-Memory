@@ -1,0 +1,27 @@
+id: R2-PAR-2026-09-26
+title: Persistence Audit Replay Recovery Contract
+status: IMPLEMENTED_PENDING_RUNTIME_VERIFICATION
+mathematical_contract:
+  authority_separation:
+    - "SQLite persistence != semantic authority"
+    - "Durable record existence != semantic validity"
+    - "Recovery derives state; it does not authorize state"
+  causal_rules:
+    - "Every replay sequence starts with previous_hash = genesis"
+    - "For n>0, previous_hash = digest(replayed_state[n-1])"
+    - "replayed_state[n] digest = record.state_hash"
+    - "candidate_hash = state_hash for accepted semantic history"
+    - "tampered durable history must fail closed before trusted recovery"
+architecture:
+  persistence: core/sqlite_persistence.py::SQLiteHistoryStore
+  replay: core/replay.py::replay
+  recovery: core/recovery.py::recover_psi
+  flow: "SQLite load -> AppendOnlyHistory validation -> deterministic replay -> derived Psi"
+changes:
+  - "Replay now explicitly validates genesis predecessor marker."
+  - "Added recovery boundary that treats SQLite as substrate and replay as state derivation."
+  - "Added adversarial tests for genesis tampering and durable-history tampering."
+pending:
+  - "CI execution"
+  - "audit-chain integration"
+  - "replay of real kernel transition operators rather than test appliers"
