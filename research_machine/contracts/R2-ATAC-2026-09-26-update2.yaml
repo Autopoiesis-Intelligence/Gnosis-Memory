@@ -1,0 +1,11 @@
+id: R2-ATAC-2026-09-26
+status: PARTIALLY_IMPLEMENTED
+completed:
+  - "Canonical admission now accepts a durable_store boundary and routes durable commits to commit_once_with_audit."
+  - "Persisted audit digest is checked against the stored digest."
+  - "Regression tests enforce that durable canonical execution cannot silently use history-only persistence."
+remaining:
+  - "Persist full Provenance/source_ids durably."
+  - "Recovery must load and verify History + Provenance + Audit before replay."
+  - "Remove or quarantine history-only persistence from production canonical usage."
+  - "CI runtime verification."
