@@ -1,0 +1,10 @@
+id: R2-AHPC-2026-09-26
+status: PARTIALLY_IMPLEMENTED
+update:
+  - "AuditRecord now has canonical audit_for_commit constructor."
+  - "Constructor requires provenance to bind candidate/evidence/kernel fields of TransitionRecord."
+  - "Audit verification reconstructs expected audit records instead of trusting stored hashes."
+remaining:
+  - "Integrate audit creation into canonical commit_once."
+  - "Persist audit chain atomically with transition history."
+  - "Recover and verify audit chain before derived state becomes trusted."
