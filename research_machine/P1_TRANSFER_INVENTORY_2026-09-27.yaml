@@ -1,0 +1,56 @@
+schema_version: "1.0.0"
+inventory_id: "RM-P1-TRANSFER-2026-09-27"
+source_repository: "Mikhail-Kucheriavyi-23/Gnozis"
+source_ref: "main"
+target_repository: "Mikhail-Kucheriavyi-23/Gnozis-Research-Memory"
+status: "RECONCILED_PARTIAL"
+
+p1_inventory:
+  contracts:
+    source_files: 3
+    target_files: 3
+    exact_sha_matches_before_reconciliation:
+      - contracts/GPE-01_GENESIS_PROVENANCE_EXPERIMENT.md
+      - contracts/MRM-03_LEGAL_AVAILABILITY_PROVENANCE_EXPERIMENT.md
+    reconciled:
+      - contracts/MRM-01_MATHEMATICAL_REVERSE_MAPPING.md
+    status: "CONTENT-VERIFIED"
+
+  formal:
+    source_files: 19
+    target_files_before: 0
+    status: "TRANSFER_BLOCKED_BY_WRITE-SAFETY-GATE"
+    classification: "CORE_FORMAL_PROOF_ARTIFACTS"
+    rule: "Do not replace formal artifacts with summaries or reconstructed content."
+    next_action: "transfer through a repository Git-object/controlled migration path, then verify exact blob SHAs"
+
+  counterexamples:
+    source_files: 0
+    status: "EMPTY_AT_SOURCE"
+
+  audits:
+    source_files: 0
+    status: "EMPTY_AT_SOURCE"
+
+  provenance:
+    source_files: 1
+    target_files: 1
+    status: "CONTENT-VERIFIED"
+
+  evidence:
+    source_files: 0
+    status: "EMPTY_AT_SOURCE"
+
+authority_boundary:
+  research_memory_is_not_core_authority: true
+  formal_artifacts_are_evidence_targets_not_runtime_authority: true
+  no_source_deletion: true
+
+next_gate:
+  id: "P1-FORMAL-OBJECT-TRANSFER"
+  prerequisite: "writable Git-object transfer path accepted by tooling"
+  acceptance:
+    - "all 19 formal blobs present"
+    - "exact source blob SHA verified for every file"
+    - "no semantic rewrite"
+    - "source remains preserved until verification"
