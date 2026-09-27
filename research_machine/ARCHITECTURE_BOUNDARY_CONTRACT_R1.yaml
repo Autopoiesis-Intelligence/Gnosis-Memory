@@ -1,0 +1,132 @@
+contract_id: GNOZIS-PHYSICAL-ARCH-BOUNDARY-R1
+status: DRAFT_FOR_IMPLEMENTATION
+date: 2026-09-27
+scope: canonical physical repository/service boundaries derived from current repository evidence
+
+repository_roles:
+  Gnozis:
+    role: public_product_discovery_surface
+    authority: false
+    may_consume_from: [Gnozis-Core, Gnozis-Research-Memory, Gnozis-Exchange]
+    may_control_core: false
+  Gnozis-Core:
+    role: operational_runtime_authority
+    authority: true
+    current_state: TARGET_REPOSITORY_NOT_PRESENT
+    source_material: Gnozis/main:core, Gnozis/main:formal, selected tests and core-specific evidence
+    may_read: [authorized_external_inputs]
+    may_write_via_controlled_path: [Gnozis-Research-Memory, Gnozis-Exchange, other_downstream_surfaces]
+    may_treat_external_surfaces_as_authority: false
+  Gnozis-Research-Memory:
+    role: research_evidence_provenance_context
+    authority: false
+    may_supply_context_to: [authorized_core_ingestion]
+    may_select_core_transitions: false
+    may_mutate_core_state_directly: false
+  Gnozis-Exchange:
+    role: external_adapters_internet_boundary
+    authority: false
+    may_translate_external_data: true
+    may_select_core_transitions: false
+    credentials: environment_or_secret_store_only
+  Gnozis-Genesis:
+    role: private_module_factory
+    visibility: private
+    authority_over_core: false
+
+core_boundary:
+  canonical_state:
+    model: "Psi=(X,R)"
+    selection: deterministic
+    mutation: transactional
+    hidden_clock: forbidden
+    external_selector: forbidden
+    llm_inside_core: forbidden
+    second_state_model: forbidden
+    github_as_runtime_proof: forbidden
+  pipeline:
+    - Generate
+    - Test
+    - Select
+    - Evolve
+    - Verify
+    - Commit
+  evidence:
+    order: [structural, execution, causal]
+    maturity_requires_evidence: true
+
+external_write_path:
+  rule: "Core may generate/update downstream knowledge or work artifacts only through an explicit authorized operation."
+  required_fields:
+    - operation_id
+    - source_state_id
+    - source_state_digest
+    - content_digest
+    - destination
+    - authorization
+    - provenance
+    - result
+  destination_is_authority: false
+  failed_write: must_not_change_core_state
+
+knowledge_boundary:
+  persistence: storage_of_artifacts
+  retrieval: selection_of_stored_artifacts_for_reading
+  consumption: interpretation_by_a_consumer
+  influence: effect_on_core_transition
+  rule: "These are distinct operations; retrieval or persistence alone grants no influence."
+
+api_schema_contract:
+  core_input:
+    required:
+      - input_type
+      - state_id
+      - state_digest
+      - content_digest
+      - payload
+      - provenance
+    invariant: "content and state identity are bound before execution"
+  core_output:
+    required:
+      - transition_id
+      - previous_state_id
+      - next_state_id
+      - candidate_id
+      - evidence
+      - audit_reference
+      - commit_status
+  external_claim:
+    required:
+      - claim_id
+      - issuer
+      - content_digest
+      - provenance
+      - received_at
+    authority: none_by_default
+  downstream_update:
+    required:
+      - operation_id
+      - destination
+      - content_digest
+      - source_state_digest
+      - authorization
+      - outcome
+
+migration_constraints:
+  source_preserved_until_verified: true
+  physical_transfer_requires_target_writable: true
+  deletion_requires_content_verification: true
+  no_silent_reclassification: true
+  research_machine_not_runtime_core: true
+  bridge_not_core: true
+
+current_gaps:
+  - Gnozis-Core repository does not currently exist in the connected GitHub inventory.
+  - Core physical transfer therefore remains blocked.
+  - API schemas above are contract-level definitions; executable implementation evidence is not yet claimed.
+  - Research-Memory currently contains duplicated legacy root documents that require later canonical-owner cleanup.
+
+next_gate:
+  id: ARCH-R1-IMPLEMENTATION
+  prerequisite: Gnozis-Core target repository exists and is writable
+  action: transfer core/formal/tests subset, then verify content, imports, tests, and trust-boundary invariants
