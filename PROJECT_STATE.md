@@ -126,3 +126,16 @@ Repository evidence overrides conversational assumptions.
 
 ## Update rule
 Every material decision must update this state, preserve historical evidence, classify claims, and update the roadmap when the next experiment changes. Failed and abandoned approaches must remain traceable rather than silently deleted.
+
+
+## 2026-09-27 physical architecture checkpoint
+
+A canonical boundary contract was added as
+`research_machine/ARCHITECTURE_BOUNDARY_CONTRACT_R1.yaml`
+(commit `7ef9a69bccd58c7fb03d7b94d6763041ec8ba0ed`).
+
+This is a contract/evidence artifact, not an implementation claim. It records the observed repository roles, the Core trust boundary, the controlled downstream write path, and minimal API/schema bindings.
+
+Important factual finding: the connected GitHub inventory currently contains `Gnozis`, `Gnozis-Genesis`, `Gnozis-Research-Memory`, and `Gnozis-Exchange`; a repository named `Gnozis-Core` is not currently present. Therefore physical Core migration remains blocked, while the source `Gnozis/main` remains preserved.
+
+Next implementation gate: create/enable the writable Core target, then transfer only the manifest-approved Core source sets and verify content, imports, tests, and trust-boundary invariants before any source deletion.
