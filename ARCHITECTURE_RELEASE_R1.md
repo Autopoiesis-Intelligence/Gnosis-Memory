@@ -395,3 +395,80 @@ No hash is treated as a substitute for evidence or contract.
 No external model or repository becomes an authority root merely by participating.
 
 The network evolves by producing bounded candidates, testing them, preserving evidence, and promoting only what the relevant governance/evidence contract permits.
+
+
+## 20. Master Evolution Core — authority root
+
+The canonical Gnozis evolution Core is a **private repository and protected authority root**.
+
+It is not the Public Network and is not exposed as an ordinary public knowledge repository.
+
+The Master Evolution Core:
+- observes admissible external/public inputs through explicit ports;
+- maintains canonical evolutionary state;
+- proposes and evaluates changes;
+- coordinates bounded kernels;
+- may initiate controlled updates to downstream public and commercial repositories;
+- records evidence and provenance for each admitted downstream change.
+
+Downstream repositories are **materialized/public/commercial surfaces**, not authority roots.
+
+The authority direction is:
+
+Master Evolution Core
+-> proposal
+-> authorization/policy
+-> scoped repository write
+-> downstream CI
+-> evidence
+-> provenance
+-> new downstream state
+
+A downstream repository MUST NOT gain authority over the Master Evolution Core merely because it receives a write from it.
+
+Public repositories, commercial kernels, external connectors and generated artifacts are therefore treated as untrusted or separately governed downstream inputs when they return information to the Master Evolution Core.
+
+## 21. Master Core write network
+
+The Master Evolution Core must not use unrestricted repository credentials or direct arbitrary writes.
+
+Required write contract:
+
+1. identify target repository;
+2. identify target path/artifact;
+3. identify intended state transition;
+4. bind the write to an authorized proposal;
+5. enforce scope/capability;
+6. execute the write through a controlled adapter;
+7. run target CI/gates;
+8. persist resulting commit/evidence;
+9. bind provenance to the resulting downstream state;
+10. make the new state admissible to the Master Core only after verification.
+
+This contract is the primary implementation bridge between the current R2/E7 Core and the final distributed Gnozis architecture.
+
+## 22. Master Core and load distribution
+
+The Master Evolution Core is a coordination/evolution authority, not a universal workload executor.
+
+It may delegate domain computation to specialized kernels.
+
+Heavy workloads such as CAD, physical simulation, accounting calculations, indexing or large-scale synthesis must execute in bounded specialized kernels.
+
+The Master Core receives bounded results/evidence rather than becoming the storage and compute bottleneck for every operation.
+
+## 23. Final trust hierarchy
+
+Master Evolution Core
+  >
+Genesis Control Plane
+  >
+Kernel contracts
+  >
+Downstream repositories/kernels
+  >
+External connectors and public sources
+
+This hierarchy does not imply that every result from a lower layer is true. It defines authority to change system state.
+
+Evidence is required before lower-layer observations can influence canonical evolutionary state.
