@@ -139,3 +139,22 @@ This is a contract/evidence artifact, not an implementation claim. It records th
 Important factual finding: the connected GitHub inventory currently contains `Gnozis`, `Gnozis-Genesis`, `Gnozis-Research-Memory`, and `Gnozis-Exchange`; a repository named `Gnozis-Core` is not currently present. Therefore physical Core migration remains blocked, while the source `Gnozis/main` remains preserved.
 
 Next implementation gate: create/enable the writable Core target, then transfer only the manifest-approved Core source sets and verify content, imports, tests, and trust-boundary invariants before any source deletion.
+
+
+## 2026-09-28 final distributed architecture checkpoint
+
+Canonical target architecture is recorded in ARCHITECTURE_RELEASE_R1.md (commit e8660cf0f55dbb0c4b3268ecff12aeefc99331ff).
+
+The architecture is now a network of bounded kernels with two primary trust-separated networks:
+- Public Network: unauthenticated public knowledge, evidence, cross-domain relations and free developer tools.
+- Commercial Network: protected Genesis coordination, partner work, commercial kernels, CRM and product generation.
+- Gnozis-Exchange: typed inter-kernel/external exchange boundary.
+- Evidence Economy: cross-cutting provenance, evidence and commercial-state hashes.
+
+No single kernel performs all workloads. Reusable coordination/evolution semantics remain in the common Core; domain computation belongs to specialized kernels.
+
+Commercial kernels may have authorized public/testing representations while retaining separate commercial provenance and contract state. Research Hash, Evidence Hash and Commercial Hash are distinct technical identifiers; a hash is not by itself a legal ownership claim or truth proof.
+
+Repository roles must be assigned through machine-readable Kernel Manifests and evidence-backed contracts. Empty/placeholder repositories are not treated as completed products.
+
+Implementation begins with the existing Core/R2/E7 proof boundary, followed by Kernel Manifest, Inter-Kernel Contract and Evidence Economy schemas. No destructive repository migration is permitted before these contracts and current evidence are preserved.
