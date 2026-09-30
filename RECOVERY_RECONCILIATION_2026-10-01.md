@@ -166,3 +166,18 @@ Do not count architecture documents, placeholder repositories, classes, or isola
 
 Canonical progression:
 Audit → Gap → Minimal patch → Test → CI → Runtime evidence → Persistence/Audit evidence → Memory update → next gate.
+
+
+## 9. PR #98 CI checkpoint — 2026-10-01
+
+Head commit `ec4d18029fe6ea86be767a8a1c38f24533a9d6b7` triggered four workflows:
+- CI #3013 — FAILURE (Python 3.11 failure; 3.12 cancelled)
+- CodeQL #1892 — FAILURE (Python and Actions jobs)
+- Import Graph #466 — FAILURE
+- Dependency Review #500 — FAILURE
+
+GitHub job log blobs currently return `404 BlobNotFound`, so the exact failure causes are NOT VERIFIED. The failures must not be attributed to PR #98 code without logs.
+
+Repository inspection of the patch found no obvious new static import cycle: `runtime → endogenous → analyzer/core` is acyclic, and persistence's evolution-memory reflection import remains lazy. Therefore no additional code patch is justified solely from the workflow conclusions.
+
+Decision: keep PR #98 unmerged; classify CI cause as UNVERIFIED/CI-ENVIRONMENT until a reproducible traceback is available. Do not weaken gates or add speculative fixes.
