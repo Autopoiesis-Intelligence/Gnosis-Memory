@@ -17,7 +17,7 @@ This map is an initial role description, not proof that every planned integratio
 ## Start here
 
 1. [Project state](PROJECT_STATE.md) — concise historical state record. Check its date and reconcile it with current repositories before relying on implementation claims.
-2. [Historical master audit](GNOZIS_MASTER_AUDIT.md) — detailed research history, reasoning, counterexamples, and status vocabulary.
+2. [Historical master audit](HISTORICAL_MASTER_AUDIT.md) — detailed research history, reasoning, counterexamples, and status vocabulary.
 3. [Architecture release R1](ARCHITECTURE_RELEASE_R1.md) — intended repository topology and trust boundaries.
 4. [Final product specification R2](FINAL_PRODUCT_TZ_R2.md) — product target and planned responsibilities.
 
