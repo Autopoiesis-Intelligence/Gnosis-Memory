@@ -1,6 +1,6 @@
 # Gnosis-Memory
 
-**Purpose:** preserve and organize research context, knowledge models, architectural records, and evidence-oriented project documentation for the Gnosis/Gnozis ecosystem.
+**Purpose:** preserve and organize research context, knowledge models, architectural records, and evidence-oriented project documentation for the Gnosis ecosystem.
 
 This repository is a knowledge and research-context surface. Its documents can inform requirements and future implementations, but a document in this repository does **not** by itself establish that a feature is implemented, reachable, running, persisted, audited, or CI-proven in `Gnosis-Core` or another runtime repository.
 
@@ -9,7 +9,7 @@ This repository is a knowledge and research-context surface. Its documents can i
 - **Gnosis** — public product and evidence/discovery surface.
 - **Gnosis-Core** — canonical engineering foundation; implementation and runtime claims must be checked against code, tests, CI, and exact commit.
 - **Gnosis-Memory** — research context, knowledge architecture, historical records, and evidence/provenance design.
-- **Gnosis-Genesis** — intended protected factory/commercial coordination environment; inspect its actual repository state before assuming a capability exists.
+- **Gnosis-Genesis** — separate private repository; its exact factory, commercial, and authority responsibilities remain unresolved until confirmed from current repository evidence.
 - **Gnosis-Exchange** — intended bounded exchange/adapter contract surface; not a universal source of truth.
 
 This map is an initial role description, not proof that every planned integration is implemented. See the canonical organization repository map when available.
@@ -33,4 +33,4 @@ Historical documents are preserved as historical records; update their status or
 
 ## Naming
 
-The product name is **Gnosis/Gnozis** as used in the relevant project context; repository names use their canonical GitHub spelling, including `Gnosis-Core`. Do not reintroduce obsolete repository paths such as `Mikhail-Kucheriavyi-23/Gnozis-V2` as current locations.
+The current product name is **Gnosis**. `Gnozis` and `Gnozis-V2` are historical spellings/names and must not be used as current product or repository identities. Repository links must use canonical GitHub names such as `Autopoiesis-Intelligence/Gnosis-Core`. Do not reintroduce obsolete paths such as `Mikhail-Kucheriavyi-23/Gnozis-V2` as current locations.
