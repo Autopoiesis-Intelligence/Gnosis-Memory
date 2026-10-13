@@ -1,6 +1,6 @@
-# Gnosis-Memory (Mnemosyne)
+# Gnosis-Memory
 
-Gnosis-Memory is the project's durable research-context and memory repository. **Mnemosyne** is the internal component name used for this repository's memory role; the canonical repository and project brand remain **Gnosis**.
+Gnosis-Memory is the project's durable research-context and memory repository.
 
 ## Purpose
 
