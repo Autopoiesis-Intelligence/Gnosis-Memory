@@ -17,7 +17,7 @@ This map is an initial role description, not proof that every planned integratio
 ## Start here
 
 1. [Project state](PROJECT_STATE.md) — concise historical state record. Check its date and reconcile it with current repositories before relying on implementation claims.
-2. [Gnozis master audit](GNOZIS_MASTER_AUDIT.md) — detailed research history, reasoning, counterexamples, and status vocabulary.
+2. [Historical master audit](GNOZIS_MASTER_AUDIT.md) — detailed research history, reasoning, counterexamples, and status vocabulary.
 3. [Architecture release R1](ARCHITECTURE_RELEASE_R1.md) — intended repository topology and trust boundaries.
 4. [Final product specification R2](FINAL_PRODUCT_TZ_R2.md) — product target and planned responsibilities.
 
@@ -33,4 +33,4 @@ Historical documents are preserved as historical records; update their status or
 
 ## Naming
 
-The current product name is **Gnosis**. `Gnozis` and `Gnozis-V2` are historical spellings/names and must not be used as current product or repository identities. Repository links must use canonical GitHub names such as `Autopoiesis-Intelligence/Gnosis-Core`. Do not reintroduce obsolete paths such as `Mikhail-Kucheriavyi-23/Gnozis-V2` as current locations.
+The current product name is **Gnosis**. Use canonical repository identities in current documentation and links, including `Autopoiesis-Intelligence/Gnosis-Core`. Legacy names may remain inside preserved historical artifacts when needed to maintain provenance, but must not be presented as current identities or locations.
