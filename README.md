@@ -1,30 +1,36 @@
-# Gnosis-Memory (Mnemosyne)
+# Gnosis-Memory
 
-Gnosis-Memory is the project's durable research-context and memory repository. **Mnemosyne** is the internal component name used for this repository's memory role; the canonical repository and project brand remain **Gnosis**.
+**Purpose:** preserve and organize research context, knowledge models, architectural records, and evidence-oriented project documentation for the Gnosis ecosystem.
 
-## Purpose
+This repository is a knowledge and research-context surface. Its documents can inform requirements and future implementations, but a document in this repository does **not** by itself establish that a feature is implemented, reachable, running, persisted, audited, or CI-proven in `Gnosis-Core` or another runtime repository.
 
-- Preserve project context, decisions, and references that should outlive a single AI session.
-- Organize research notes, definitions, provenance, and evidence pointers.
-- Distinguish established facts from hypotheses, rejected directions, and unresolved questions.
-- Help contributors recover working state without treating conversational memory as proof.
+## Repository boundaries
 
-## Evidence discipline
+- **Gnosis** — public product and evidence/discovery surface.
+- **Gnosis-Core** — canonical engineering foundation; implementation and runtime claims must be checked against code, tests, CI, and exact commit.
+- **Gnosis-Memory** — research context, knowledge architecture, historical records, and evidence/provenance design.
+- **Gnosis-Genesis** — separate private repository; its exact factory, commercial, and authority responsibilities remain unresolved until confirmed from current repository evidence.
+- **Gnosis-Exchange** — intended bounded exchange/adapter contract surface; not a universal source of truth.
 
-Project state should be checked against the current repository, exact commit, tests, CI runs, and runtime evidence as applicable. A saved note or summary is a recovery aid, not independent proof that a feature exists or works.
+This map is an initial role description, not proof that every planned integration is implemented. See the canonical organization repository map when available.
 
-Use these distinctions consistently:
+## Start here
 
-- documented ≠ implemented;
-- implemented ≠ reachable;
-- tests passing ≠ runtime evidence;
-- evidence ≠ execution authority;
-- persistence ≠ ingestion or execution.
+1. [Project state](PROJECT_STATE.md) — concise historical state record. Check its date and reconcile it with current repositories before relying on implementation claims.
+2. [Historical master audit](HISTORICAL_MASTER_AUDIT.md) — detailed research history, reasoning, counterexamples, and status vocabulary.
+3. [Architecture release R1](ARCHITECTURE_RELEASE_R1.md) — intended repository topology and trust boundaries.
+4. [Final product specification R2](FINAL_PRODUCT_TZ_R2.md) — product target and planned responsibilities.
 
-## Boundaries
+## Evidence and freshness rules
 
-Gnosis-Memory stores context and references; it does not grant authority to modify Gnosis-Core or execute protected operations. Core changes remain subject to the relevant implementation, verification, governance, and authorization contracts.
+Use the following evidence ladder when describing capability status:
 
-## Current status
+`DESIGN → IMPLEMENTED → REACHABLE → RUNTIME → PERSISTED → AUDITED → CI_PROVEN`
 
-This README describes the repository's intended role. Specific capabilities and completeness must be established from the files and evidence present on the current default branch; no end-to-end memory workflow is implied by this document alone.
+Do not promote a design document or historical report into a current implementation claim. For current engineering status, record the exact repository, branch, commit SHA, relevant tests/CI run, and runtime evidence. If the sources disagree, mark the item **RECONCILIATION REQUIRED** until resolved.
+
+Historical documents are preserved as historical records; update their status or add a dated reconciliation note rather than silently rewriting history.
+
+## Naming
+
+The current product name is **Gnosis**. Use canonical repository identities in current documentation and links, including `Autopoiesis-Intelligence/Gnosis-Core`. Legacy names may remain inside preserved historical artifacts when needed to maintain provenance, but must not be presented as current identities or locations.
