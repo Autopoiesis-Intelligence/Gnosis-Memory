@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "transfer_id": "GNOZIS-C-RECORDS-R1-2026-09",
-  "source_repository": "Mikhail-Kucheriavyi-23/Gnozis",
+  "source_repository": "Autopoiesis-Intelligence/Gnosis",
   "source_ref": "main",
-  "target_repository": "Mikhail-Kucheriavyi-23/Gnozis-Research-Memory",
+  "target_repository": "Autopoiesis-Intelligence/Gnosis-Memory",
   "target_branch": "transfer/c-records-r1",
   "mode": "COPY_ONLY",
   "source_record_count": 183,
